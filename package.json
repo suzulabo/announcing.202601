@@ -13,6 +13,7 @@
     "eslint-plugin-format": "catalog:",
     "eslint-plugin-svelte": "catalog:",
     "svelte": "catalog:",
-    "svelte-eslint-parser": "catalog:"
+    "svelte-eslint-parser": "catalog:",
+    "typescript": "catalog:"
   }
 }
