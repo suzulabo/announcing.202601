@@ -1,5 +1,14 @@
+catalogMode: strict
+
+savePrefix: ''
+
+shellEmulator: true
+
+trustPolicy: no-downgrade
 packages:
   - packages/*
+overrides:
+  chokidar: 4.0.1
 
 catalog:
   '@antfu/eslint-config': 7.2.0
@@ -21,14 +30,3 @@ catalog:
   typescript: 5.9.3
   vite: 7.3.1
   wrangler: 4.63.0
-
-catalogMode: strict
-
-overrides:
-  chokidar: 4.0.1
-
-savePrefix: ''
-
-shellEmulator: true
-
-trustPolicy: no-downgrade
