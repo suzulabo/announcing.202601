@@ -84,8 +84,6 @@ export const PUT: RequestHandler = async ({ request, platform, cookies }) => {
       credential_public_key: Buffer.from(registrationInfo.credential.publicKey).toString('base64'),
       counter: registrationInfo.credential.counter,
       credential_device_type: registrationInfo.credentialDeviceType,
-      credential_backed_up: registrationInfo.credentialBackedUp,
-      transports: response.response.transports || [], // Save transports if available
       user_id: userId,
     })
 

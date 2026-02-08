@@ -1,5 +1,5 @@
 /// <reference types="@cloudflare/workers-types" />
-import type { AuthenticatorTransportFuture, CredentialDeviceType } from '@simplewebauthn/types'
+import type { CredentialDeviceType } from '@simplewebauthn/types'
 
 export interface User {
   id: string
@@ -12,8 +12,6 @@ export interface Authenticator {
   credential_public_key: string
   counter: number
   credential_device_type: CredentialDeviceType
-  credential_backed_up: boolean
-  transports: AuthenticatorTransportFuture[]
   user_id: string
 }
 
@@ -48,8 +46,6 @@ export class DB {
       credential_public_key: string
       counter: number
       credential_device_type: CredentialDeviceType
-      credential_backed_up: number
-      transports: string
       user_id: string
       created_at: number
     }
@@ -59,11 +55,8 @@ export class DB {
       .bind(userId)
       .all<AuthenticatorRow>()
 
-    // Parse transports from JSON string
     return results.results.map((row: AuthenticatorRow) => ({
       ...row,
-      credential_backed_up: Boolean(row.credential_backed_up),
-      transports: row.transports ? JSON.parse(row.transports) : [],
     }))
   }
 
@@ -72,8 +65,8 @@ export class DB {
       .prepare(
         `INSERT INTO authenticators (
           id, credential_id, credential_public_key, counter, 
-          credential_device_type, credential_backed_up, transports, user_id
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+          credential_device_type, user_id
+        ) VALUES (?, ?, ?, ?, ?, ?)`,
       )
       .bind(
         auth.id,
@@ -81,8 +74,6 @@ export class DB {
         auth.credential_public_key,
         auth.counter,
         auth.credential_device_type,
-        auth.credential_backed_up ? 1 : 0,
-        JSON.stringify(auth.transports),
         auth.user_id,
       )
       .run()

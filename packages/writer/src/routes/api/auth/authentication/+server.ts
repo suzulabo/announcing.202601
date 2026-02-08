@@ -29,7 +29,6 @@ export const POST: RequestHandler = async ({ request, platform, cookies }) => {
     allowCredentials: userAuthenticators.map(authenticator => ({
       id: authenticator.credential_id,
       type: 'public-key',
-      transports: authenticator.transports,
     })),
     userVerification: 'preferred',
   })
@@ -77,7 +76,6 @@ export const PUT: RequestHandler = async ({ request, platform, cookies }) => {
       id: authenticator.credential_id,
       publicKey: new Uint8Array(Buffer.from(authenticator.credential_public_key, 'base64')),
       counter: authenticator.counter,
-      transports: authenticator.transports,
     },
   })
 
