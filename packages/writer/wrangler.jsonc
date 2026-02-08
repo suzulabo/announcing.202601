@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "writer",
+  "compatibility_date": "2025-02-04",
+  "compatibility_flags": ["nodejs_compat"],
+  "pages_build_output_dir": ".svelte-kit/cloudflare",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "writer-db",
+      "database_id": "xxxx-xxxx-xxxx-xxxx"
+    }
+  ]
+}

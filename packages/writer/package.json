@@ -12,12 +12,19 @@
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "catalog:",
+    "@simplewebauthn/browser": "catalog:",
+    "@simplewebauthn/server": "catalog:",
+    "@simplewebauthn/types": "catalog:",
     "@sveltejs/adapter-cloudflare": "catalog:",
     "@sveltejs/kit": "catalog:",
     "@sveltejs/vite-plugin-svelte": "catalog:",
+    "@types/node": "catalog:",
+    "jose": "catalog:",
     "svelte": "catalog:",
     "svelte-check": "catalog:",
     "typescript": "catalog:",
-    "vite": "catalog:"
+    "vite": "catalog:",
+    "wrangler": "catalog:"
   }
 }
