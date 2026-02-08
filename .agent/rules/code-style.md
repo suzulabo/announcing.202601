@@ -17,3 +17,6 @@ trigger: always_on
 - pnpm
   - monorepo by workspaces
   - Strict catalog mode
+- tests
+  - vitest
+  - playwright
